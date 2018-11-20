@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!--
+ * Redisign Pluton's template from http://graphberry.com by Kineev Alexey
+ * Author: Kineev Alaxey
+ * Author URL: https://www.facebook.com/alexey.kineev
+-->
+<html lang="en">
+
+    <head>
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Roshalonline Первый городской оператор связи</title>
+        {% load staticfiles %}
+        <!-- Load Roboto font -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- Load css styles -->
+        <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap-responsive.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/pluton.css' %}" />
+        <!--[if IE 7]>
+            <link rel="stylesheet" type="text/css" href="{% static 'content/pluton-ie7.css' %}" />
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="{% static 'content/jquery.cslider.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/jquery-ui.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/jquery.bxslider.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/animate.css' %}" />
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'images/ico/icon_144.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/ico/icon_114.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/ico/icon_72.png' %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/icon_57.png' %}">
+        <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+    </head>
+
+    <body>
+        {% block content %}
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="#" class="brand">
+                        <img src="{% static 'images/logo.png' %}" width="140" height="50" alt="Logo" />
+                        <!-- This is website logo -->
+                    </a>
+                    <!-- Navigation button, visible on small resolution -->
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <i class="icon-menu"></i>
+                    </button>
+                    <!-- Main navigation -->
+                    <div class="nav-collapse collapse pull-right">
+                        <ul class="nav" id="top-navigation">
+                            {% for section in sections %}
+                                {% if forloop.counter == 1 %}
+                                    <li class="active"><a href="#{{ section.name }}">{{ section.description }}</a></li>
+                                {% else %}
+                                    <li><a href="#{{ section.name }}">{{ section.description }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- End main navigation -->
+                </div>
+            </div>
+        </div>
+        <!-- Start home section -->
+        <div id="home">
+            <!-- Start cSlider -->
+            <div id="da-slider" class="da-slider">
+                <div class="triangle"></div>
+                <!-- mask elemet use for masking background image -->
+                <div class="mask"></div>
+                <!-- All slides centred in container element -->
+                <div class="container">
+                    <!-- Top page slidee -->
+                    {% for top_informer in top_informers %}
+                        <div class="da-slide">
+                            <h2 class="fittext2">{{ top_informer.title }}</h2>
+                            <h4>{{ top_informer.description }}</h4>
+                            <p>{{ top_informer.message }}</p>
+                            <a href="#{{ top_informer.link_to_site_section.name }}" class="da-link button">Узнать больше</a>
+                            <div class="da-img">
+                                <img src="{{ top_informer.image.url }}" alt="image{{ forloop.counter }}" width="320">
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- Top page slider -->
+                    <!-- Start cSlide navigation arrows -->
+                    <div class="da-arrows">
+                        <span class="da-arrows-prev"></span>
+                        <span class="da-arrows-next"></span>
+                    </div>
+                    <!-- End cSlide navigation arrows -->
+                </div>
+            </div>
+        </div>
+        <!-- End home section -->
+
+        <!-- Service section start -->
+        <div class="section primary-section" id="service">
+            <div class="container">
+                <!-- Start title section -->
+                <div class="title">
+                    <h1>Спектр услуг</h1>
+                    <!-- Section's title goes here -->
+                    <p>В данном разделе Вы сможете ознакомиться с услугами, предоставляемыми нашей компанией</p>
+                    <!--Simple description for section goes here. -->
+                </div>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/internet_service.png' %}" alt="service 1">
+                            </div>
+                            <h3>Интернет</h3>
+                            <p>Доступ физических и юридических лиц к сети Интернет</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/phone_service.png' %}" alt="service 2" />
+                            </div>
+                            <h3>Телефония</h3>
+                            <p>Доступ физических и юридических лиц к местной, зоновой, мг/мн связи</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/network_service.png' %}" alt="service 3">
+                            </div>
+                            <h3>Сети связи</h3>
+                            <p>Строительство сетей связи различной степени сложности на оборудовании ведущих вендоров</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/channels_service.png' %}" alt="service 1">
+                            </div>
+                            <h3>Каналы связи</h3>
+                            <p>Предоставление в аренду физическим и юридическим лицам L2, L3 каналов связи</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/low_amper_network_service.png' %}" alt="service 2" />
+                            </div>
+                            <h3>Слаботочные сети</h3>
+                            <p>Монтаж, пуско-наладка, сопровождение слаботочных охранных, пожарных и инженерных сетей</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="{% static 'images/electric_service.png' %}" alt="service 3">
+                            </div>
+                            <h3>Электромонтажные работы</h3>
+                            <p>Проведение электромонтажных работ различной степени сложности </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service section end -->
+
+        <!-- News section start -->
+        <div class="section secondary-section " id="news">
+            <div class="triangle"></div>
+            <div class="container">
+                <div class="tarifs-title centered">
+                    <h1>Важная информация</h1>
+                    <p>В данном разделе Вы найдете самую актуальную информацию о нас и нашей деятельности</p>
+                </div>
+                <ul class="nav nav-pills">
+                    <li class="filter" data-filter="all">
+                        <a href="#noAction">Все</a>
+                    </li>
+                    {% for category in categories %}
+                        <li class="filter" data-filter="{{ category.name }}">
+                            <a href="#noAction">{{ category.description }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div id="single-news">
+                    {% for one_news in news %}
+                        <div id="slidingDiv{{ forloop.counter }}" class="toggleDiv row-fluid single-news">
+                            <div class="span6">
+                                {% if one_news.use_default_image %}
+                                    <img src="{{ one_news.category.image.url }}" alt="news {{ forloop.counter }}" width="640" height="400"/>
+                                {% else %}
+                                    <img src="{{ one_news.image.url }}" alt="news {{ forloop.counter }}" width="640" height="400"/>
+                                {% endif %}
+                            </div>
+                            <div class="span6">
+                                <div class="news-description">
+                                    <div class="news-title clearfix">
+                                        <h3>{{ one_news.title }}</h3>
+                                        <span class="show_hide close">
+                                            <i class="icon-cancel"></i>
+                                        </span>
+                                    </div>
+                                    <div class="news-info">
+                                        <div>
+                                            <span>Категория</span>{{ one_news.category.description }}
+                                        </div>
+                                        <div>
+                                            <span>Дата</span>{{ one_news.creation_date }}
+                                        </div>
+                                        <div>
+                                            <span>Информация</span><a href="#{{ one_news.link_to_site_section.name }}">{{ one_news.description_for_link_to_site_section }}</a>
+                                        </div>
+                                    </div>
+                                        <p>{{ one_news.message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <ul id="news-grid" class="thumbnails row">
+                    {% for one_news in news %}
+                        <li class="span4 mix {{ one_news.category.name }}" id="news-brick">
+                            <div class="thumbnail">
+                                {% if one_news.use_default_image %}
+                                    <img src="{{ one_news.category.image.url }}" alt="news {{ forloop.counter }}">
+                                {% else %}
+                                    <img src="{{ one_news.image.url }}" alt="news {{ forloop.counter }}">
+                                {% endif %}
+                                <a href="#single-news" class="more show_hide" rel="#slidingDiv{{ forloop.counter }}">
+                                    <i class="icon-plus"></i>
+                                </a>
+                                <h3>{{ one_news.category.description }}</h3>
+                                <p>{{ one_news.preview_title }}</p>
+                                <div class="mask"></div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- News section end -->
+
+        <!-- About us section start -->
+        <div class="section primary-section" id="about">
+            <div class="triangle"></div>
+            <div class="container">
+                <div class="title">
+                    <h1>Коротко об Roshalonline</h1>
+                    <p>Три важных факта, которые Вы должны знать о нас</p>
+                </div>
+                <div class="row-fluid team">
+                    <div class="span4" id="first-person">
+                        <div class="thumbnail">
+                            <img src="{% static 'images/about_us_rellability.png' %}" alt="team 1">
+                            <h3>15 лет на рынке телекоммуникаций</h3>
+                            <div class="mask">
+                                <h2>Надежность</h2>
+                                <p>Компания "Альтес-Р" была основана в далеком 2002 году на базе сетей связи Рошальского Химического Комбината.
+                                И вот на протяжении 15 лет мы накопили большой опыт в сфере телекоммуникаций и занем как успешно его применять.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span4" id="second-person">
+                        <div class="thumbnail">
+                            <img src="{% static 'images/about_us_quality.png' %}" alt="team 1">
+                            <h3>Забота о клиентах</h3>
+                            <div class="mask">
+                                <h2>Качество</h2>
+                                <p>За все время работы отличительной чертой работы компании являются грамотная работа и лояльность к действующим клиентам. Каждый из
+                                которых знает, что ему всегда будет предоставлены максимально качетвенные услуги и грамотное сопровождение.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span4" id="third-person">
+                        <div class="thumbnail">
+                            <img src="{% static 'images/about_us_professionalism.png' %}" alt="team 1">
+                            <h3>Профессионализм</h3>
+                            <div class="mask">
+                                <h2>Результат</h2>
+                                <p>Высокий профессионализм сотрудников позволяет нам оставаться лидером телекоммуникационной индустрии в г. Рошаль. Именно нам доверяют
+                                90% организаций и более половины жителей г. Рошаль.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text centered">
+                    <h3>О нас</h3>
+                    <p>Компания "Альтес-Р" была основана в 2002 году бывшими сотрудниками узла правительственной связи г. Рошаль. В тот самый период, когда
+                    в России происходил бурный скачок развития телекоммуникационных технологий. В течении последующего времени, мы организовали передовую сеть
+                    в городе для предоставления услуг местной, зоновой, мг\мн связи и доступа к сети Интернет, технологически опередив всех своих потенциальных конкурентов.
+                    Идут годы, рынок телекоммуникаций не стоит на месте, и к основному роду деятельности мы довали довльно широкий спектр актуальных телекоммуникационных услуг
+                    Без ложной скромности можно сказать, что компания "Альтес-Р" является лидером г. Рошаль в своем сегменте.</p>
+                </div>
+            </div>
+        </div>
+        <!-- About us section end -->
+
+        <!-- Client section start -->
+        <div id="clients">
+            <div class="section secondary-section">
+                <div class="triangle"></div>
+                <div class="container centered">
+                    <p class="large-text">Для управления услугами, платежами, документами перейдите в Личный Кабинет</p>
+                    <a href="#" class="button">Вход в Личный Кабнет</a>
+                </div>
+            </div>
+            <div class="section primary-section">
+                <div class="triangle"></div>
+                <div class="container">
+                    <div class="title">
+                        <h1>Уголок клиента</h1>
+                        <p>Перейдите к форме обратной связи или оставьте отзыв о нашей компании</p>
+                    </div>
+                    <div class="row">
+                        <div class="span6" id="clients-brick">
+                            <div class="highlighted-box center">
+                                <h2>Свяжитесь с нами</h2>
+                                <p>Воспользовавшись специальной формой, Вы сможете отправить запрос на подключение необходимой услуги, задать интересующий вопрос, оставить
+                                запрос на устранение неисправностей, либо заказать обратный звонок. После чего с Вами свяжется первый свободный специалист для уточнения всех возможных деталей.</p>
+                               <a href="#contact" class="button button-sp">Перейти</a>
+                            </div>
+                        </div>
+                        <div class="span6" id="clients-brick">
+                            <div class="highlighted-box center">
+                                <h2>Оставьте отзыв о нас</h2>
+                                <p>Уважаемый клиент, мы всегда заинтересованы в улучшении качества предоставлемых услуг связи, а также качества обслуживания. Для достижения
+                                этой цели нам нужно знать Ваше мнение о нашей работе. Уделив всего-лишь пару минут своего времени вы поможете понять сильные
+                                и слабые стороны нашей деятельности.</p>
+                                <a href="https://2ip.ru/isp-review-add/" class="button button-sp">Оставить отзыв</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Совершенство достигнуто не тогда, когда нечего добавить, а когда нечего убрать" © Антуан де Сент-Экзюпери
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Client section start -->
+
+        <!-- Price section start -->
+        <div id="price" class="section secondary-section">
+            <div class="container centered">
+                <div class="tarifs-title">
+                    <h1>Актуальные тарифы на услуги</h1>
+                    <p>Выберите интересующую категорию услуг для ознакомления с нашими предложениями</p>
+                </div>
+                <ul class="nav nav-pills">
+                     <li class="filter" id="tarif-li">
+                         <a href="#ethernet-tarifs" id="tarif-nav">Интернет по технологии Ethernet</a>
+                     </li>
+                    <li class="filter" id="tarif-li">
+                        <a href="#adsl-tarifs" id="tarif-nav">Интернет по технологии ADSL</a>
+                    </li>
+                    <li class="filter" id="tarif-li">
+                        <a href="#phone-tarifs" id="tarif-nav">Телефонная связь</a>
+                    </li>
+                </ul>
+                <div class="sub-section">
+                    <div class="title clearfix" id="ethernet-tarifs">
+                        <div class="pull-left">
+                            <h3>Интернет по технологии Ethernet</h3>
+                        </div>
+                        <ul class="tarifs-nav pull-right">
+                            <li id="eth-tarifs-prev"></li>
+                            <li id="eth-tarifs-next"></li>
+                        </ul>
+                    </div>
+                    <ul class="row tarifs-slider" id="eth-tarifs-slider">
+                        {% for internet_tarif in internet_tarifs %}
+                            {% if internet_tarif.type == 'ethernet-tarifs' %}
+                                <li>
+                                    <div class="span4 price-column">
+                                        <h3>{{ internet_tarif.title }}</h3>
+                                        <ul class="list">
+                                            <li class="price"> {{ internet_tarif.price }} руб</li>
+                                            <li><strong>Скорость</strong> {{ internet_tarif.link_speed }}</li>
+                                            <li><strong>Подключение</strong> 1 рубль</li>
+                                            <li><strong>Трафик</strong> Безлимитный</li>
+                                        </ul>
+                                        <a href="#contact" class="button button-ps" id="{{ internet_tarif.title }}">Подключить</a>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <div class="title clearfix" id="adsl-tarifs">
+                        <div class="pull-left">
+                            <h3>Интернет по технологии ADSL</h3>
+                        </div>
+                        <ul class="tarifs-nav pull-right">
+                            <li id="adsl-tarifs-prev"></li>
+                            <li id="adsl-tarifs-next"></li>
+                        </ul>
+                    </div>
+                    <ul class="row tarifs-slider" id="adsl-tarifs-slider">
+                        {% for internet_tarif in internet_tarifs %}
+                            {% if internet_tarif.type == "adsl-tarifs" %}
+                                <li>
+                                    <div class="span4 price-column">
+                                        <h3>{{ internet_tarif.title }}</h3>
+                                        <ul class="list">
+                                            <li class="price"> {{ internet_tarif.price }} руб</li>
+                                            <li><strong>Скорость</strong> {{ internet_tarif.link_speed }}</li>
+                                            <li><strong>Подключение</strong> 1 рубль</li>
+                                            <li><strong>Трафик</strong> Безлимитный</li>
+                                        </ul>
+                                        <a href="#contact" class="button button-ps" id="{{ internet_tarif.title }}">Подключить</a>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <div class="title clearfix" id="phone-tarifs">
+                        <div class="pull-left">
+                            <h3>Услуги телефонной связи</h3>
+                        </div>
+                    </div>
+                    <div class="phone-tarifs-title">
+                       <p>На сегодняшний день наша компания представляет единственный безлимитный тариф для пользования услугой местной телефонной связи.
+                       Ежемесячная стоимость данного тарифного плана составляет 335 рублей в месяц без ограничений времени соединений. Стоимость установки телефонного аппарата составляет 1 рубль. Для расчета стоимости зоновых/междугородных/международных соединений воспользуйтесь специальной формой ниже.</p>
+                    </div>
+                    <div class="phone-duration">
+                        {% csrf_token %}
+                        <form class="inline-form" method="post">
+                            <input name="duration-input" id="ph-duration" class="span8" placeholder="Введите телефонный код оператора, населенного пункта или страны (минимум 4 знака)" required />
+                            <button id="ph-submit" class="button button-ph">Расчитать</button>
+                        </form>
+                        <div id="success-price" class="alert alert-success invisible">
+                        </div>
+                        <div id="err-ph-data" class="error centered">Пожалуйста, введите телефонный код пункта назначения</div>
+                        <div id="err-ph-response" class="error centered">Вы пытаетесь отправить некорректные данные на сервер.
+                        Введите корректный код телефонного направления и попробуйте снова.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Price section end -->
+
+        <!-- Newsletter section start -->
+        <div class="section third-section">
+            <div class="container newsletter">
+                <div class="sub-section">
+                    <div class="title clearfix">
+                        <div class="pull-left-newsletter">
+                            <h3>Подпишитесь на E-mail рассылку</h3>
+                        </div>
+                    </div>
+                </div>
+                <div id="success-subscribe" class="alert alert-success invisible">
+                    <strong>Отлично!</strong>Теперь вы будуте получать уведомления обо всех новостях компании
+                </div>
+                <div class="row-fluid">
+                    <div class="span5">
+                        <p>Подпишитесь на новостную рассылку от Roshalonline и будьте в кусре всех важных изменений</p>
+                    </div>
+                    <div class="span7">
+                        {% csrf_token %}
+                        <form class="inline-form" method="post">
+                            <input type="email" name="email" id="nlmail" class="span8" placeholder="Введите свой e-mail" required />
+                            <button id="subscribe" class="button button-sp">Подписаться</button>
+                        </form>
+                        <div id="err-subscribe" class="error centered">Пожалуйста, укажите корректный e-mail</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter section end -->
+
+        <!-- Contact section start -->
+        <div id="contact" class="contact">
+            <div class="section secondary-section">
+                <div class="container centered">
+                    <div class="tarifs-title">
+                        <h1>Контактная информация</h1>
+                        <p>Ознакомьтесь со схемой проезда, воспользуйтесь формой обратной связи, либо свяжитесь с нами любым удобным для Вас способом по данным, указанным в разделе с контактными данными.</p>
+                    </div>
+                    <div class="title clearfix" id="ethernet-tarifs">
+                        <div class="pull-left">
+                            <h3>Схема проезда и форма обратной связи</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <div class="map-canvas" id="map-canvas">Загружаем карту...</div>
+                    <div class="container" id="inmap-form">
+                        <div class="row-fluid">
+                            <div class="span5 contact-form centered">
+                                <p>Форма обратной связи</p>
+                                <div id="successSend" class="alert alert-success invisible">
+                                    <strong>Отлично!</strong>Выше обращение успешно отправлено</div>
+                                <div id="errorSend" class="alert alert-error invisible">К сожалению ваше обращение не было отпралено. Перезагрузите страницу и повторите еще раз.</div>
+                                {% csrf_token %}
+                                <form id="contact-form">
+                                    <div class="control-group">
+                                        <div class="control-group">
+                                            <select class="span12" id="message-category">
+                                                <option>Общие вопросы</option>
+                                                <option>Подключить услугу</option>
+                                                <option>Технические неполадки</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <input class="span12" type="text" id="name" name="name" placeholder="Как к Вам обращаться" />
+                                            <div class="error" id="err-name">Пожалуйста, укажите как Вас зовут</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <input class="span12" type="number" pattern="/(7|8|9)\d{9}/" name="tel" id="tel" placeholder="Ваш контактный телефон" />
+                                            <div class="error" id="err-phone">Пожалуйста, укажите свой телефонный номер</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <textarea class="span12" name="comment" id="comment" placeholder="Текст сообщения"></textarea>
+                                            <div class="error" id="err-comment">Пожалуйста, заполните тело сообщения</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <button id="send-message" class="message-btn">Отправить</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container centered" id="contact-data">
+                    <div class="title clearfix" id="ethernet-tarifs">
+                        <div class="pull-left">
+                            <h3>Почтовый адрес и контактные данные</h3>
+                        </div>
+                    </div>
+                    <div class="phone-tarifs-title">
+                        <p style="padding: 0px;">Наш адрес: 140730, Московская область, г. Рошаль, ул. Косякова, д. 13</p>
+                        <p style="padding: 0px;">Контактный телефон: +7(496)455-81-05   ( Ежедневно 8:00-18:00 )</p>
+                        <p style="padding: 0px;">Факс: +7(496)455-81-09   ( Понедельник-Пятница 8:00-17:00 )</p>
+                        <a href="mailto:info@roshalonline.ru"><p style="padding: 0px;">Электронный адрес: info@roshalonline.ru</p></a>
+                    </div>
+                    <div class="row-fluid centered">
+                        <ul class="social">
+                            <li>
+                                <a href="">
+                                    <img src="{% static 'images/vk.png' %}" width="48" height="48" alt="vk" id="social-btn"/>
+                                    <img src="{% static 'images/vk_hover.png' %}" width="48" height="48" alt="vk" id="hide-social-btn"/>
+{#                                    <span class="icon-facebook-circled"></span>#}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="{% static 'images/facebook.png' %}" width="48" height="48" alt="vk" id="social-btn"/>
+                                    <img src="{% static 'images/facebook_hover.png' %}" width="48" height="48" alt="vk" id="hide-social-btn"/>
+{#                                    <span class="icon-twitter-circled"></span>#}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="{% static 'images/ok.png' %}" width="48" height="48" alt="vk" id="social-btn"/>
+                                    <img src="{% static 'images/ok_hover.png' %}" width="48" height="48" alt="vk" id="hide-social-btn"/>
+{#                                    <span class="icon-linkedin-circled"></span>#}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact section edn -->
+
+        <!-- Footer section start -->
+        <div class="footer">
+            <p>© Powered by {{ author }} 2017-{{ year }}</p>
+        </div>
+        <!-- Footer section end -->
+
+        <!-- ScrollUp button start -->
+        <div class="scrollup">
+            <a href="#">
+                <i class="icon-up-open"></i>
+            </a>
+        </div>
+        {% endblock %}
+        <!-- ScrollUp button end -->
+
+        <!-- Include javascript -->
+        {% block scripts %}
+        <script src="{% static 'scripts/jquery.js' %}"></script>
+        <script src="{% static 'scripts/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/jquery.mixitup.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/modernizr.custom.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/jquery.bxslider.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/jquery.cslider.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/jquery.placeholder.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/jquery.inview.js' %}"></script>
+        <!-- Load google maps api and call initializeMap function defined in app.js -->
+        <script async="" defer="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDCuPMKMayz8ptaRdh2MiCdbIzWb_MTY&sensor=false&callback=initializeMap"></script>
+        <!-- css3-mediaqueries.js for IE8 or older -->
+        <!--[if lt IE 9]>
+            <script src="{% static 'scripts/respond.min.js' %}"></script>
+        <![endif]-->
+        <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>
+        {% endblock %}
+    </body>
+</html>

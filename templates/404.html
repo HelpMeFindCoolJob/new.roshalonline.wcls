@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+ * Redisign Pluton's template from http://graphberry.com by Kineev Alexey
+ * Author: Kineev Alaxey
+ * Author EMAIL: atnr@bk.ru
+-->
+<html lang="en" style="background-color: #FECE1A;width: 100%;height: 100%;margin: 0;padding: 0;overflow: hidden;">
+    <head>
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Roshalonline 404 Error</title>
+        {% load staticfiles %}
+        <!-- Load Roboto font -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- Load css styles -->
+        <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap-responsive.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'content/style.css' %}" />
+        <!--[if IE 7]>
+            <link rel="stylesheet" type="text/css" href="{% static 'content/pluton-ie7.css' %}" />
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="{% static 'content/jquery-ui.css' %}" />
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'images/ico/icon_144.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/ico/icon_114.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/ico/icon_72.png' %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/icon_57.png' %}">
+        <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+    </head>
+    <body style="background-color: #FECE1A;width: 100%;height: 100%;margin: 0;padding: 0;overflow: hidden;">
+        {% block content %}
+        <div class="navbar navbar-fixed-top animated fadeInDown">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="#" class="brand">
+                        <img src="{% static 'images/logo.png' %}" width="140" height="50" alt="Logo" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="error-parent">
+            <div id="error-block">
+                <div id="error-container" class="container centered section secondary-section">
+                    <div class="title">
+                        <h1>Ошибка 404</h1>
+                        <p>Мы не можем отобразить страницу, поскольку она не существует</p>
+                    </div>
+                    <div class="row">
+                        <div class="span6" id="clients-brick">
+                            <div class="highlighted-box center" id="err-block">
+                                <h2>HTTP 404</h2>
+                                <p>Ошибка 404 или Not Found («не найдено») — стандартный код ответа HTTP о том, что клиент
+                                    был в состоянии общаться с сервером, но сервер не может найти данные согласно запросу.
+                                    Ошибку 404 не следует путать с ошибкой «Сервер не найден» или иными ошибками, указывающими
+                                    на ограничение доступа к серверу. Ошибка 404 означает, что запрашиваемый ресурс может быть
+                                    доступен в будущем, что однако не гарантирует наличие прежнего содержания.</p>
+                               <a href="http://www.roshalonline.ru" class="button button-sp">На главную</a>
+                               <a href="mailto:info@roshalonline.ru" class="button button-sp">Написать нам</a>
+                            </div>
+                        </div>
+                        <div class="span6" id="clients-brick">
+                            <div class="highlighted-box center" id="err-block">
+                                <img src="{% static 'images/lebowski.png' %}" />
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        Где страница, Лебовски?! Мы пришли за страницой! Где наша чертова страница, Лебовски?!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer navbar-fixed-bottom">
+            <p>© Powered by Kineev Alexey</p>
+        </div>
+        {% endblock %}
+        <!-- Include javascript -->
+        {% block scripts %}
+        <script src="{% static 'scripts/jquery.js' %}"></script>
+        <script src="{% static 'scripts/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'scripts/bootstrap.js' %}"></script><!-- css3-mediaqueries.js for IE8 or older -->
+        <!--[if lt IE 9]>
+            <script src="{% static 'scripts/respond.min.js' %}"></script>
+        <![endif]-->
+        {% endblock %}
+    </body>
+</html>
